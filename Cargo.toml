@@ -1,0 +1,12 @@
+[package]
+name = "nano-rpc-client"
+version = "0.1.0"
+authors = ["gak"]
+edition = "2018"
+
+[dependencies]
+tokio = { version = "*", features = ["full"] }
+reqwest = { version = "*", features = ["json"] }
+serde = { version = "*", features = ["derive"] }
+serde_json = "*"
+thiserror = "*"
