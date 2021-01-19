@@ -4,12 +4,22 @@ mod raw;
 mod send;
 mod version;
 mod wallet_add;
+mod wallet_create;
+mod wallet_balances;
+mod receive_minimum_set;
+mod account_weight;
+mod account_representative;
 
 pub use key_expand::{KeyExpandRequest, KeyExpandResponse};
 pub use raw::Raw;
 pub use send::{SendRequest, SendResponse};
 pub use version::VersionResponse;
 pub use wallet_add::{WalletAddRequest, WalletAddResponse};
+pub use wallet_create::{WalletCreateResponse};
+pub use wallet_balances::{WalletBalancesRequest, WalletBalancesResponse};
+pub use receive_minimum_set::{ReceiveMinimumSetRequest, ReceiveMinimumSetResponse};
+pub use account_representative::{AccountRepresentativeRequest, AccountRepresentativeResponse};
+pub use account_weight::{AccountWeightRequest, AccountWeightResponse};
 
 use bigdecimal::ParseBigDecimalError;
 use internal_prelude::*;
@@ -72,7 +82,7 @@ impl NanoClient {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Hash)]
 pub struct Address(String);
 
 impl Address {

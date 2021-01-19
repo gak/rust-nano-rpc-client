@@ -7,18 +7,24 @@ pub struct SendRequest<'a> {
     pub source: &'a Address,
     pub destination: &'a Address,
     pub amount: &'a Raw,
-    pub id: Option<&'a str>,
+    pub id: &'a str,
 }
 
 impl<'a> SendRequest<'a> {
-    pub fn new(wallet: &'a Wallet, source: &'a Address, destination: &'a Address, amount: &'a Raw) -> Self {
+    pub fn new(
+        wallet: &'a Wallet,
+        source: &'a Address,
+        destination: &'a Address,
+        amount: &'a Raw,
+        id: &'a str,
+    ) -> Self {
         Self {
             action: "send",
             wallet,
             source,
             destination,
             amount,
-            id: None,
+            id,
         }
     }
 }
