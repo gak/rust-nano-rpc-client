@@ -12,3 +12,4 @@ serde_json = "*"
 thiserror = "*"
 redis = "0.19.0"
 bigdecimal = { version = "0.2.0", features = ["serde"] }
+chrono = { version = "*", features = ["serde"] }

@@ -2,6 +2,7 @@ use crate::internal_prelude::*;
 use bigdecimal::BigDecimal;
 use std::fmt::Display;
 use std::str::FromStr;
+use bigdecimal::ToPrimitive;
 
 const RAW_TO_NANO: &str = "1_000_000_000_000_000_000_000_000";
 const RAW_TO_MNANO: &str = "1_000_000_000_000_000_000_000_000_000_000";
@@ -46,12 +47,20 @@ impl Raw {
         self.0.to_string()
     }
 
+    pub fn to_raw_bigdecimal(&self) -> BigDecimal {
+        self.0.clone()
+    }
+
     pub fn to_nano_bigdecimal(&self) -> BigDecimal {
         self.0.clone() / BigDecimal::from_str(RAW_TO_NANO).unwrap()
     }
 
     pub fn to_mnano_bigdecimal(&self) -> BigDecimal {
         self.0.clone() / BigDecimal::from_str(RAW_TO_MNANO).unwrap()
+    }
+
+    pub fn try_to_mnano_i64(&self) -> Option<i64> {
+        self.to_mnano_bigdecimal().to_i64()
     }
 
     pub fn to_nano_string(&self) -> String {

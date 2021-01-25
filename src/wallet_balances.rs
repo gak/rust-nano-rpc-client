@@ -1,5 +1,6 @@
 use crate::internal_prelude::*;
 use std::collections::HashMap;
+use crate::Balance;
 
 #[derive(Debug, Serialize)]
 pub struct WalletBalancesRequest<'a> {
@@ -14,12 +15,6 @@ impl<'a> WalletBalancesRequest<'a> {
             wallet,
         }
     }
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Balance {
-    balance: Raw,
-    pending: Raw,
 }
 
 #[derive(Debug, Deserialize)]

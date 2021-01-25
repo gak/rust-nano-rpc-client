@@ -1,5 +1,4 @@
 use crate::internal_prelude::*;
-use std::collections::HashMap;
 
 #[derive(Debug, Serialize)]
 pub struct AccountWeightRequest<'a> {
